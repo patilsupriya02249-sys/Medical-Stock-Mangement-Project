@@ -1,1 +1,2 @@
-i will add medistock pproject folder 
+i will add medistock project folder 
+Frontend code will be added here
