@@ -42,47 +42,61 @@ export default function Home() {
   return (
     <main className={`min-h-screen transition-all duration-300 ${pageBg}`}>
 
-      {/* Header */}
       <header className={`border-b px-6 py-5 sticky top-0 z-50 backdrop-blur ${
-        dark ? "bg-slate-900 border-slate-700" : "bg-white/70 border-slate-200"
-      }`}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/images/pharmacy.jpg" className="w-10 h-10 rounded-lg" />
-            <span className="font-bold text-2xl">MediStock</span>
-          </Link>
+  dark ? "bg-slate-900 border-slate-700" : "bg-white/70 border-slate-200"
+}`}>
+  <div className="max-w-7xl mx-auto grid grid-cols-3 items-center">
 
-          <div className="flex items-center gap-6">
+    {/* Left: Logo */}
+    <div className="flex items-center gap-2">
+      <Link href="/" className="flex items-center gap-2">
+        <img src="/images/pharmacy.jpg" className="w-10 h-10 rounded-lg" />
+        <span className="font-bold text-2xl">MediStock</span>
+      </Link>
+    </div>
 
-            {/* Navigation */}
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-              <Link href="/" className="hover:text-blue-600">Home</Link>
-              <a href="#about" className="hover:text-blue-600">About</a>
-              <a href="#features" className="hover:text-blue-600">Features</a>
-              <a href="#how" className="hover:text-blue-600">How It Works</a>
-              <a href="#contact" className="hover:text-blue-600">Contact</a>
-            </nav>
+    {/* Center: Navigation */}
+    <nav className="hidden md:flex justify-center gap-8 text-lg font-medium">
+  <Link href="/" className="hover:text-blue-600 whitespace-nowrap">
+    Home
+  </Link>
+  <a href="#about" className="hover:text-blue-600 whitespace-nowrap">
+    About
+  </a>
+  <a href="#features" className="hover:text-blue-600 whitespace-nowrap">
+    Features
+  </a>
+  <a href="#how" className="hover:text-blue-600 whitespace-nowrap">
+    How It Works
+  </a>
+  <a href="#contact" className="hover:text-blue-600 whitespace-nowrap">
+    Contact
+  </a>
+</nav>
 
-            {/* Dark mode toggle */}
-            <button
-              onClick={() => setDark(!dark)}
-              className="p-2 rounded-lg border"
-            >
-              {dark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
 
-            <Link href="/login">
-              <Button variant="outline">Login</Button>
-            </Link>
+    {/* Right: Actions */}
+    <div className="flex items-center justify-end gap-4">
+      <button
+        onClick={() => setDark(!dark)}
+        className="p-2 rounded-lg border"
+      >
+        {dark ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
 
-            <Link href="/register">
-              <Button className="bg-gradient-to-r from-blue-600 to-emerald-500 text-white">
-                Create Account
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Link href="/login">
+        <Button variant="outline">Login</Button>
+      </Link>
+
+      <Link href="/register">
+        <Button className="bg-gradient-to-r from-blue-600 to-emerald-500 text-white">
+          Create Account
+        </Button>
+      </Link>
+    </div>
+
+  </div>
+</header>
 
       {/* Hero */}
       <section className={`px-6 py-24 ${heroBg}`}>
@@ -173,10 +187,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { icon: Package, title: "Inventory Tracking", img: "/images/inventory.jpg", link: "/medical/dashboard" },
-              { icon: AlertCircle, title: "Expiry Alerts", img: "/images/expiry.jpg", link: "/medical/dashboard?tab=expiry" },
-              { icon: Users, title: "Staff Management", img: "/images/staff.jpg", link: "/staff/dashboard" },
-              { icon: BarChart3, title: "Reports & Analytics", img: "/images/analytics.jpg", link: "/admin/dashboard" }
+              { icon: Package, title: "Inventory Tracking", img: "/images/inventory.jpg", link: "/inventory" },
+              { icon: AlertCircle, title: "Expiry Alerts", img: "/images/expiry.jpg", link: "/expiry" },
+              { icon: Users, title: "Staff Management", img: "/images/staff.jpg", link: "/staff-management" },
+              { icon: BarChart3, title: "Reports & Analytics", img: "/images/analytics.jpg", link: "/reports" }
             ].map((f, i) => (
               <Card key={i} className={`${card} overflow-hidden`}>
                 <img src={f.img} className="w-full h-44 object-cover" />
@@ -290,19 +304,19 @@ export default function Home() {
           <div>
             <h4 className="font-semibold mb-4">Product</h4>
             <ul className="space-y-2 text-sm">
-              <li>Inventory Management</li>
-              <li>Expiry Alerts</li>
-              <li>Staff Control</li>
-              <li>Analytics</li>
+              <li><Link href="/inventory">Inventory Management</Link></li>
+              <li><Link href="/expiry">Expiry Alerts</Link></li>
+              <li><Link href="/staff-management">Staff Control</Link></li>
+              <li><Link href="/reports">Analytics</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-4">Dashboards</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/dashboard">User</Link></li>
-              <li><Link href="/staff/dashboard">Staff</Link></li>
-              <li><Link href="/admin/dashboard">Admin</Link></li>
+              <li><Link href="/login">User</Link></li>
+              <li><Link href="/login">Staff</Link></li>
+              <li><Link href="/login">Admin</Link></li>
             </ul>
           </div>
 
